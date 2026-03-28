@@ -26,7 +26,7 @@ public class TaskRepository {
 
             writer.close();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error saving tasks");
         }
     }
@@ -35,43 +35,55 @@ public class TaskRepository {
 
         List<Task> tasks = new ArrayList<Task>();
 
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            return tasks;
+        }
+
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            BufferedReader reader = new BufferedReader(new FileReader(file));
 
             String line;
 
             while ((line = reader.readLine()) != null) {
 
-                String[] parts = line.split(",");
+                try {
 
-                if (parts.length != 5) {
+                    String[] parts = line.split(",");
+
+                    if (parts.length != 5) {
+                        continue;
+                    }
+
+                    String type = parts[0];
+                    String title = parts[1];
+                    LocalDate deadline = LocalDate.parse(parts[2]);
+                    int difficulty = Integer.parseInt(parts[3]);
+                    double hours = Double.parseDouble(parts[4]);
+
+                    Task task = null;
+
+                    if (type.equals("Assignment")) {
+                        task = new AssignmentTask(title, deadline, difficulty, hours);
+                    } else if (type.equals("Exam")) {
+                        task = new ExamTask(title, deadline, difficulty, hours);
+                    } else if (type.equals("Reading")) {
+                        task = new ReadingTask(title, deadline, difficulty, hours);
+                    }
+
+                    if (task != null) {
+                        tasks.add(task);
+                    }
+
+                } catch (Exception e) {
                     continue;
-                }
-
-                String type = parts[0];
-                String title = parts[1];
-                LocalDate deadline = LocalDate.parse(parts[2]);
-                int difficulty = Integer.parseInt(parts[3]);
-                double hours = Double.parseDouble(parts[4]);
-
-                Task task = null;
-
-                if (type.equals("Assignment")) {
-                    task = new AssignmentTask(title, deadline, difficulty, hours);
-                } else if (type.equals("Exam")) {
-                    task = new ExamTask(title, deadline, difficulty, hours);
-                } else if (type.equals("Reading")) {
-                    task = new ReadingTask(title, deadline, difficulty, hours);
-                }
-
-                if (task != null) {
-                    tasks.add(task);
                 }
             }
 
             reader.close();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("Error loading tasks");
         }
 
