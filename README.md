@@ -148,12 +148,13 @@ SmartStudyPlanner/
 
 2. Compile the project:
 
-javac -d out -sourcepath src\SmartStudyPlanner\src src\SmartStudyPlanner\src\planner\Main.java
-
+```
+    javac -d out -sourcepath src\SmartStudyPlanner\src src\SmartStudyPlanner\src\planner\Main.java
+```
 3. Run the application:
 
-java -cp out planner.Main
-
+```
+    java -cp out planner.Main
 ---
 
 ## Git Discipline & Development
