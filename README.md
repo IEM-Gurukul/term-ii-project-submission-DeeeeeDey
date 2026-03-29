@@ -126,6 +126,9 @@ SmartStudyPlanner/
         └── exception/
             └── InvalidTaskException.java
 ```
+## UML Diagram
+
+![UML Diagram](./docs/UML.png)
 
 ## Technical Stack
 
