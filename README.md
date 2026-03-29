@@ -89,39 +89,43 @@ The system follows a layered architecture:
 
 ## Project Structure
 
-SmartStudyPlanner
-    ├───data
-    │       tasks.txt
-    │
-    └───src
-        └───planner
-            │   Main.java
-            │
-            ├───exception
-            │       InvalidTaskException.java
-            │
-            ├───model
-            │       AssignmentTask.java
-            │       ExamTask.java
-            │       ReadingTask.java
-            │       Task.java
-            │
-            ├───repository
-            │       TaskRepository.java
-            │
-            ├───service
-            │       PlannerService.java
-            │       ReminderService.java
-            │
-            ├───strategy
-            │       BalancedStrategy.java
-            │       DeadlineStrategy.java
-            │       DifficultyStrategy.java
-            │       SchedulerStrategy.java
-            │
-            └───ui
-                    ConsoleUI.java
----
+## Project Structure
+
+```
+SmartStudyPlanner/
+│
+├── data/
+│   └── tasks.txt
+│
+└── src/
+    └── planner/
+        ├── Main.java
+        │
+        ├── model/
+        │   ├── Task.java
+        │   ├── AssignmentTask.java
+        │   ├── ExamTask.java
+        │   └── ReadingTask.java
+        │
+        ├── strategy/
+        │   ├── SchedulerStrategy.java
+        │   ├── DeadlineStrategy.java
+        │   ├── DifficultyStrategy.java
+        │   └── BalancedStrategy.java
+        │
+        ├── service/
+        │   ├── PlannerService.java
+        │   └── ReminderService.java
+        │
+        ├── repository/
+        │   └── TaskRepository.java
+        │
+        ├── ui/
+        │   └── ConsoleUI.java
+        │
+        └── exception/
+            └── InvalidTaskException.java
+```
 
 ## Technical Stack
 
