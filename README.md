@@ -155,7 +155,7 @@ SmartStudyPlanner/
 
 ```
     java -cp out planner.Main
----
+```
 
 ## Git Discipline & Development
 
