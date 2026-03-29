@@ -1,43 +1,160 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/pG3gvzt-)
 # PCCCS495 – Term II Project
 
-
-## PROJECT TITLE
+## Project Title
 Smart Study Planner using Strategy and Observer Pattern
-
-## PROBLEM STATEMENT
-Students frequently experience issues in managing school work due to improper prioritization, shifting deadlines, and the absence of a structured planning tool. Conventional paper-based planners are static and do not respond to shifting priorities based on the urgency, complexity, or time available for a given task. The project aims to create a Smart Study Planner using Java that automatically organizes academic tasks based on user-defined criteria such as deadlines, difficulty level, and time required for a task. The application also includes features such as multiple scheduling methods, the ability to change methods as required, reminders for approaching deadlines, and notifications for overdue tasks. The project seeks to create a modular, object-oriented solution that reflects the principles of abstraction, extensibility, separation of concerns, and the use of design patterns in a simple and maintainable fashion.
-
-## TARGET USER
-College students who want a structured and flexible way to organize academic tasks and manage deadlines.
-
-## CORE FEATURES
-- Add, update, and delete academic tasks  
-- Task categorization (assignment, exam preparation, reading)  
-- Dynamic scheduling using selectable strategies  
-- Runtime switching between scheduling strategies  
-- Deadline reminders and overdue alerts  
-- File-based persistence for saving and loading tasks  
-- Input validation and exception handling  
-
-## OOP CONCEPTS TO BE USED
-
-**ABSTRACTION :** Will represent shared attributes such as title, deadline, difficulty, and estimated effort while allowing flexibility for specialized task types.  
-
-**INHERITANCE :** The design will include specialized task categories such as assignments, examinations, and reading activities, each extending a generalized task structure to support code reuse and logical hierarchy.  
-
-**POLYMORPHISM :** Different scheduling behaviors dynamically according to user request.  
-
-**EXCEPTION HANDLING :** Custom exceptions for invalid input, missing data, file errors.  
-
-## COLLECTIONS
-Collections (ArrayList, PriorityQueue) for task management. Optional thread for reminders.
-
-## PROPOSED ARCHITECTURE DESCRIPTION
-The system will be designed using a layered architecture, where user interaction, business logic, and data storage are separated. The design will include task management, multiple scheduling models, and deadline notifications. Modularity, extensibility, and separation of concerns are also included.
-## How to Run
 
 ---
 
-## Git Discipline Notes
-Minimum 10 meaningful commits required.
+## Problem Statement
+This project implements a Smart Study Planner that helps students manage academic tasks efficiently through dynamic scheduling techniques. The system addresses the common problem of poor task prioritization and lack of structured planning by introducing multiple scheduling strategies based on deadlines, difficulty, and estimated effort.
+
+The application follows an object-oriented and modular design to ensure maintainability, flexibility, and extensibility. It incorporates design patterns to allow dynamic behavior and improved separation of concerns.
+
+---
+
+## Target User
+
+### Primary Users
+- College students managing multiple academic tasks  
+- Individuals seeking structured study planning  
+
+### Secondary Users
+- Students learning Object-Oriented Programming  
+- Developers exploring design patterns and layered architecture  
+
+---
+
+## Core Features
+
+### Task Management
+- Add, view, and remove tasks  
+- Multiple task types: Assignment, Exam, Reading  
+
+### Scheduling System
+- Dynamic scheduling using multiple strategies  
+- Deadline-based prioritization  
+- Difficulty-based prioritization  
+- Balanced strategy combining multiple factors  
+- Runtime switching of strategies  
+
+### Reminder System
+- Identification of overdue tasks  
+- Alerts for upcoming deadlines  
+
+### Data Persistence
+- File-based storage using text file  
+- Automatic loading of saved tasks  
+- Data retained across executions  
+
+### Input Validation
+- Numeric validation for inputs  
+- Date format validation  
+- Controlled error handling using exceptions  
+
+---
+
+## Object-Oriented Programming Concepts Implemented
+
+### Abstraction
+- Abstract class `Task` defines common structure for all tasks  
+
+### Inheritance
+- Specialized classes extend base task:
+  - AssignmentTask  
+  - ExamTask  
+  - ReadingTask  
+
+### Polymorphism
+- Strategy interface enables dynamic scheduling behavior  
+
+### Encapsulation
+- Task data is private and accessed via getter/setter methods  
+
+### Exception Handling
+- Input validation and runtime error handling using try-catch  
+
+---
+
+## Architecture Overview
+
+The system follows a layered architecture:
+
+- UI Layer: Handles user interaction  
+- Service Layer: Manages core business logic  
+- Strategy Layer: Defines scheduling algorithms  
+- Model Layer: Represents task entities  
+- Repository Layer: Handles file storage  
+
+---
+
+## Project Structure
+
+SmartStudyPlanner
+    ├───data
+    │       tasks.txt
+    │
+    └───src
+        └───planner
+            │   Main.java
+            │
+            ├───exception
+            │       InvalidTaskException.java
+            │
+            ├───model
+            │       AssignmentTask.java
+            │       ExamTask.java
+            │       ReadingTask.java
+            │       Task.java
+            │
+            ├───repository
+            │       TaskRepository.java
+            │
+            ├───service
+            │       PlannerService.java
+            │       ReminderService.java
+            │
+            ├───strategy
+            │       BalancedStrategy.java
+            │       DeadlineStrategy.java
+            │       DifficultyStrategy.java
+            │       SchedulerStrategy.java
+            │
+            └───ui
+                    ConsoleUI.java
+---
+
+## Technical Stack
+
+### Language & Runtime
+- Java (JDK 11 compatible)
+
+### Libraries & APIs
+- Collections: ArrayList, List  
+- Date Handling: LocalDate  
+- File I/O: BufferedReader, BufferedWriter  
+- Input Handling: Scanner  
+
+---
+
+## Execution Instructions
+
+### Using Command Line
+
+1. Navigate to project root directory
+
+2. Compile the project:
+
+javac -d out -sourcepath src\SmartStudyPlanner\src src\SmartStudyPlanner\src\planner\Main.java
+
+3. Run the application:
+
+java -cp out planner.Main
+
+---
+
+## Git Discipline & Development
+
+- Incremental commits for each feature  
+- Meaningful commit messages  
+- Logical progression of development  
+- Minimum 10 commits maintained  
